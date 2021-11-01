@@ -25,31 +25,9 @@ const db = knex({
 
 //json reader
 app.use(bodyParser.json());
-app.use(cors())
+app.use(cors());
 
-//database for testing users
-const database = {
-    users: [
-        {
-            id: '123',
-            name: 'Jhon',
-            email: 'jhon@gmail.com',
-            password: 'coockies',
-            entries: 0,
-            joined: new Date()
-        },
-        {
-            id: '124',
-            name: 'sally',
-            email: 'sally@gmail.com',
-            password: 'apples',
-            entries: 0,
-            joined: new Date()
-        }
-    ]
-}
-
-app.get('/', (req, res)=> { res.send('it is working') })
+app.get('/', (req, res)=> { res.send('it is working') });
 
 //app sign in coding
 app.post('/signin', (req, res) => {signin.handleSignin(req, res, db, bcrypt)});
@@ -66,4 +44,4 @@ app.post('/imageurl', (req, res) => {image.handleApiCall(req, res)});
 //server port report
 app.listen( process.env.PORT || 3000, ()=> {
     console.log(`app is puuurrrrring at port ${process.env.PORT}`);
-})
+});
