@@ -15,13 +15,14 @@ const image = require('./ServerControllers/image');
 //database conection to front end
     //take in mind that CLARIFAI API takes too much updates times, 
     //it might fail to load the API since the API server goes down sometimes
-const db = knex({ 
+
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
+
+    const db = knex({ 
     client: 'pg',
     connection: {
       connectionString : process.env.DATABASE_URL,
-      ssl: {
-        rejectUnauthorized: false
-      }
+      ssl: true
     }
 });
 
